@@ -121,10 +121,10 @@ const Register = () => {
           </span>
           {loading ? (
             <span className="registerButton1">
-              <LoadingSmall />
+              <button className="registerButton">Submit</button>
             </span>
           ) : (
-            <button className="registerButton">Submit</button>
+            <LoadingSmall />
           )}
         </form>
         <button
