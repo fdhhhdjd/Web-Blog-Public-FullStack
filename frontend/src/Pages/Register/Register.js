@@ -120,11 +120,11 @@ const Register = () => {
               "Mật khẩu nhập lại không khớp!   "}
           </span>
           {loading ? (
-            <span className="registerButton1">
-              <button className="registerButton">Submit</button>
-            </span>
+            <button className="registerButton">Submit</button>
           ) : (
-            <LoadingSmall />
+            <span className="registerButton1">
+              <LoadingSmall />
+            </span>
           )}
         </form>
         <button

@@ -103,13 +103,13 @@ const Login = () => {
             {errors.password?.type === "required" &&
               "Mời bạn nhập đầy đủ mật khẩu. "}
           </span>
-          {/* {loading ? (
+          {loading ? (
+            <button className="loginButton">Submit</button>
+          ) : (
             <span className="loginButton1">
               <LoadingSmall />
             </span>
-          ) : ( */}
-          <button className="loginButton">Submit</button>
-          {/* )} */}
+          )}
 
           <span
             className="loginButton"

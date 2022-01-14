@@ -60,9 +60,9 @@ const Forget = () => {
           />
 
           {loading ? (
-            <LoadingSmall />
-          ) : (
             <button className="registerButton">Submit</button>
+          ) : (
+            <LoadingSmall />
           )}
         </form>
         <button
