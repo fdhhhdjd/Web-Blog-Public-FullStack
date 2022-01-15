@@ -15,7 +15,6 @@ const initialState = {
 const AuthReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.LOGIN_API_START:
-    case types.LOGIN_GOOGLE_START:
     case types.REGISTER_API_START:
     case types.REFRESH_TOKEN_ADMIN_START:
     case types.LOGOUT_API_START:
@@ -26,6 +25,10 @@ const AuthReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+      };
+    case types.LOGIN_API_START:
+      return {
+        ...state,
       };
     case types.REGISTER_API_SUCCESS:
       return {
