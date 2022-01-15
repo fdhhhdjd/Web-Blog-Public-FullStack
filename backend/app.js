@@ -18,10 +18,14 @@ app.use(
 
 //!router import
 const auth = require("./Routes/authRoute");
+const post = require("./Routes/postRoute");
+const category = require("./Routes/categoriesRoute");
 const upload = require("./Routes/UpLoadClound");
 //!Link router Main
 app.use("/api/auth", auth);
 app.use("/api", upload);
+app.use("/api/post", post);
+app.use("/api/category", category);
 
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 app.get("*", (req, res) => {

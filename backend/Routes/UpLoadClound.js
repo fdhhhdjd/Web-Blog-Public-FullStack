@@ -29,7 +29,7 @@ router.post("/upload", auth, (req, res) => {
 
     cloudinary.v2.uploader.upload(
       file.tempFilePath,
-      { folder: "test" },
+      { folder: "post" },
       async (err, result) => {
         if (err) throw err;
 

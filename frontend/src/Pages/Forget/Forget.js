@@ -34,6 +34,7 @@ const Forget = () => {
       swal(`${forgetPassword.msg}`, {
         icon: "success",
       });
+      setState({ email: "" });
       dispatch(clearErrors());
     } else if (forgetPassword.success === false) {
       swal(`${forgetPassword.msg}`, {
