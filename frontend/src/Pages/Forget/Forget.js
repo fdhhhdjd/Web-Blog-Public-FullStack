@@ -60,7 +60,9 @@ const Forget = () => {
           />
 
           {loading ? (
-            <LoadingSmall />
+            <span className="registerButton1">
+              <LoadingSmall />
+            </span>
           ) : (
             <button className="registerButton">Submit</button>
           )}
