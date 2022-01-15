@@ -34,6 +34,7 @@ const ChangePassword = () => {
       swal(`${changePassword.msg}`, {
         icon: "success",
       });
+      setState({ password: "", confirmPassword: "", oldPassword: "" });
       dispatch(clearErrors());
     } else if (changePassword.success === false) {
       swal(`${changePassword.msg}`, {
