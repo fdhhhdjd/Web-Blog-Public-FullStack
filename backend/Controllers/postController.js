@@ -24,10 +24,10 @@ const postCtrl = {
   },
   getPostsId: async (req, res) => {
     try {
-      const allPost = await Posts.findById(req.params.id);
+      const allPosts = await Posts.findById(req.params.id);
       res.json({
         success: true,
-        allPost,
+        allPosts,
       });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
@@ -66,19 +66,12 @@ const postCtrl = {
   DeletePost: async (req, res) => {
     try {
       const post = await Posts.findById(req.params.id);
-      if (post.author === req.body.author) {
-        try {
-          await post.delete();
-          res.json({
-            success: true,
-            msg: "Post has been deleted...",
-          });
-        } catch (err) {
-          res.status(500).json(err);
-        }
-      } else {
-        res.json({ success: false, msg: "You can delete only your post!" });
-      }
+
+      await post.delete();
+      res.json({
+        success: true,
+        msg: "Post has been deleted...",
+      });
     } catch (err) {
       res.status(500).json(err);
     }
@@ -91,7 +84,9 @@ const postCtrl = {
           success: false,
           msg: "No image upload",
         });
-      await Posts.findOneAndUpdate(
+      const post = await Posts.findById(req.params.id);
+
+      const updatedPost = await Posts.findByIdAndUpdate(
         { _id: req.params.id },
         {
           title,
@@ -100,15 +95,39 @@ const postCtrl = {
           photo,
           author,
           categories,
-        }
+        },
+        { new: true }
       );
-      res.json({
-        success: true,
-        msg: "Update Post Successfully !",
-      });
-    } catch {
-      return res.status(500).json({ msg: err.message });
+      res.status(200).json(updatedPost);
+    } catch (err) {
+      res.status(500).json(err);
     }
   },
 };
 module.exports = postCtrl;
+// try {
+//   const { title, desc, status, photo, author, categories } = req.body;
+//   if (!photo)
+//     return res.status(400).json({
+//       success: false,
+//       msg: "No image upload",
+//     });
+//   await Posts.findOneAndUpdate(
+//     { _id: req.params.id },
+//     {
+//       title,
+//       desc,
+//       status,
+//       photo,
+//       author,
+//       categories,
+//     },
+//     { new: true }
+//   );
+//   res.json({
+//     success: true,
+//     msg: "Update Post Successfully !",
+//   });
+// } catch {
+//   return res.status(500).json({ msg: err.message });
+// }

@@ -1,7 +1,5 @@
 import axios from "axios";
 import * as types from "../ActionTypes";
-import { toast } from "react-toastify";
-import swal from "sweetalert";
 //?Register
 export const RegisterStart = () => ({
   type: types.REGISTER_API_START,

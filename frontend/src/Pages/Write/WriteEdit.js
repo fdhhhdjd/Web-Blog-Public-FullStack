@@ -7,13 +7,13 @@ import { WriteStyle } from "../../Styles/WriteStyle/WriteStyle";
 import { LoadingSmall, MetaData, TopBar } from "../../Imports/Index";
 import { feed } from "../../Utils/Data/SliderImg";
 import { GlobalState } from "../../Contexts/GlobalState";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 const initialState = {
   title: "",
   desc: "",
   status: "",
 };
-const Write = () => {
+const WriteEdit = () => {
   const { profile, refreshTokens } = useSelector((state) => state.auth);
   const { allPost } = useSelector((state) => state.post);
   const navigate = useNavigate();
@@ -23,7 +23,20 @@ const Write = () => {
   const [states, setState] = useState(initialState);
   const [callback, setCallback] = state.callback;
   const { title, desc, status, author } = states;
-
+  const { id } = useParams();
+  useEffect(() => {
+    if (id) {
+      allPost.forEach((product) => {
+        if (product._id == id) {
+          setState(product);
+          setImages(product.photo);
+        }
+      });
+    } else {
+      setState(initialState);
+      setImages(false);
+    }
+  }, [id, allPost]);
   const img =
     "https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500";
 
@@ -73,21 +86,21 @@ const Write = () => {
         icon: "error",
       });
     try {
-      await axios.post(
-        "/api/post/create",
-        { ...states, author: profile.name, photo: images },
+      await axios.put(
+        `/api/post/edit/${id}`,
+        { ...states, photo: images },
         {
           headers: {
             Authorization: `${refreshTokens}`,
           },
         }
       );
-      swal("Create write Successfully", {
+      swal("Edit write Successfully", {
         icon: "success",
       });
       setState({ title: "", desc: "", status: "" });
       setCallback(!callback);
-      navigate("/allPost");
+      navigate(`/single/${id}`);
     } catch (error) {
       alert(error.response.data.msg);
     }
@@ -117,7 +130,7 @@ const Write = () => {
     <>
       <TopBar />
       <WriteStyle />
-      <MetaData title="Write-Blog-Dev" />
+      <MetaData title="EditWrite-Blog-Dev" />
       <marquee
         behavior="scroll"
         className="marquee1"
@@ -180,19 +193,10 @@ const Write = () => {
               placeholder="Title"
               type="text"
               name="title"
-              value={title}
+              value={states.title}
               autoFocus={true}
               onChange={handleChangeInput}
             />
-            {/* <input
-              className="writeInput"
-              placeholder="Title"
-              type="text"
-              name="author"
-              value={author}
-              autoFocus={true}
-              onChange={handleChangeInput}
-            /> */}
           </div>
           <div className="writeFormGroup">
             <label htmlFor="">
@@ -202,7 +206,7 @@ const Write = () => {
             <select
               className="select"
               name="status"
-              value={status}
+              value={states.status}
               onChange={handleChangeInput}
             >
               <option value="0">Choose Feed 😷:</option>
@@ -235,4 +239,4 @@ const Write = () => {
   );
 };
 
-export default Write;
+export default WriteEdit;

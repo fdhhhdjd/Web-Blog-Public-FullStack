@@ -45,10 +45,10 @@ const ChangePassword = () => {
   }, [changePassword]);
   return (
     <>
-      {/* <TopBar /> */}
+      <TopBar />
       <SettingStyle />
       <MetaData title="ChangePass-blog" />
-      <div className="settings1">
+      <div className="settings">
         <div className="settingsWrapper">
           <div className="settingsTitle">
             <span className="settingsTitleUpdate">Change Password</span>
@@ -92,7 +92,7 @@ const ChangePassword = () => {
             </button>
           </form>
         </div>
-        {/* <SideBarProfile /> */}
+        <SideBarProfile />
       </div>
     </>
   );

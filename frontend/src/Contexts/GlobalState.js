@@ -4,6 +4,7 @@ import {
   RefreshTokenInitiate,
   ProfileInitiate,
 } from "../redux/Action/ActionAuth";
+import postApi from "./postApi";
 import UserApi from "./UserApi";
 
 export const GlobalState = createContext();
@@ -24,10 +25,11 @@ export const DataProvider = ({ children }) => {
       refreshToken();
     }
   }, [callback]);
-
+  postApi();
   const data = {
     callback: [callback, setCallback],
     UserApi: UserApi(refreshTokens),
+    PostApi: postApi(callback),
     // AdminApi: AdminApi(token.accessToken, callback),
     // ProductApi: ProductApi(callback),
     // InfoAllUserApi: InfoAllUserApi(token, callback),

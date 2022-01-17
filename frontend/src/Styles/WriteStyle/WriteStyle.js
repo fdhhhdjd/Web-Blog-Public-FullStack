@@ -73,4 +73,22 @@ export const WriteStyle = createGlobalStyle`
     display: flex;
     align-items: center;
   }
+  .select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;       
+    background-image: url();
+    width: 70vw;
+    border: none;
+    outline: none;
+    font-size: 0.8rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    cursor:pointer;
+    display:inline-block;
+    position:relative;
+    font:normal 0.8rem/22px Arial;
+    color:black;
+
+  }
 `;

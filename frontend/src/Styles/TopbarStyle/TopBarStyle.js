@@ -12,7 +12,9 @@ export const TopBarStyle = createGlobalStyle`
     z-index: 999;
     font-family: "Josefin Sans", sans-serif;
   }
-  
+  .active{
+    border-bottom:3px solid gray;
+  }
   .topLeft,
   .topRight {
     flex: 3;

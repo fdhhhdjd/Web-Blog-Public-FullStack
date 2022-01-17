@@ -10,9 +10,10 @@ const SideBarProfile = () => {
       <div className="sidebar">
         <div className="sidebarItem">
           <span className="sidebarTitle">
-            ABOUT MY {profile.name.toUpperCase()}
+            ABOUT MY {profile.name && profile.name.toUpperCase()}
           </span>
-          <img src={profile.image.url} alt="" />
+          {profile.image && <img src={profile.image.url} alt="" />}
+
           <p style={{ fontWeight: "bold" }}>
             Cảm ơn {profile.name} đã ghé thăm trang web blog của tôi chúc
             {profile.name} một ngày vui vẻ hạnh phúc, Nếu bạn cần hộ trợ liên hệ

@@ -10,6 +10,7 @@ export const LoadingSmallStyle = createGlobalStyle`
   display: inline-block;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
+  
 }
 
 @keyframes rotation {

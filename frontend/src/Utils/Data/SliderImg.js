@@ -21,3 +21,38 @@ export const sliderItems = [
     bg: "fbf0f4",
   },
 ];
+export const feed = [
+  {
+    value: "1",
+    msg: "Đang cảm thấy rất vui 😆",
+  },
+  {
+    value: "2",
+    msg: "Đang cảm thấy rất buồn 😌",
+  },
+
+  {
+    value: "3",
+    msg: "Đang cảm thấy bất lực 😑",
+  },
+  {
+    value: "4",
+    msg: "Đang cảm thấy điên tiếc 😏",
+  },
+  {
+    value: "5",
+    msg: "Đang cảm thấy muốn khóc 😢",
+  },
+  {
+    value: "6",
+    msg: "Đang cảm thấy tức giận 😠",
+  },
+  {
+    value: "7",
+    msg: "Đang cảm thấy biết ơn 😙",
+  },
+  {
+    value: "8",
+    msg: "Đang cảm thấy được yêu 😙",
+  },
+];
